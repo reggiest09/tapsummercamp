@@ -2127,7 +2127,7 @@ strong {
 
 /* Transparent Navigations */
 .nav-bg-default {
-  background-image:url("nav-bg-default.jpg");
+  background-image:url('nav-bg-default.jpg');
   /*background: url("../images/nav-bg-default.jpg");*/
   background-repeat: no-repeat;
   background-size: cover;
@@ -2349,14 +2349,14 @@ strong {
 
 .top-menu-bg {
 
-  background: url("nav-bg-default.jpg");
+  background: url('nav-bg-default.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
 }
 
 .top-menu-bg-inverse {
-  background: url("nav-bg-inverse.jpg");
+  background: url('nav-bg-inverse.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -3209,7 +3209,7 @@ table.shopping-cart > thead > tr > th, table > thead > tr > td {
 }
 
 #dark-slider .slide1 {
-  background-image: url("bg3.png");
+  background-image: url('bg3.png');
   -webkit-background-size: cover;
   -moz-background-size: cover;
   background-size: cover;
@@ -3217,7 +3217,7 @@ table.shopping-cart > thead > tr > th, table > thead > tr > td {
 }
 
 #dark-slider .slide2 {
-  background-image: url("bg2.png");
+  background-image: url('bg2.png');
   -webkit-background-size: cover;
   -moz-background-size: cover;
   background-size: cover;
@@ -3276,7 +3276,7 @@ table.shopping-cart > thead > tr > th, table > thead > tr > td {
 /* Testimonials Slider */
 #testimonials-slider {
   background-color: #cccccc;
-  background: url("testimonials-bg.jpg");
+  background: url('testimonials-bg.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
@@ -3483,7 +3483,7 @@ header h3 {
 }
 
 #light-header {
-  background-image: url("sc1.png");
+  background-image: url('sc1.png');
   -webkit-background-size: cover;
   -moz-background-size: cover;
   background-size: cover;
@@ -3537,7 +3537,7 @@ header h3 {
 
 #light-slider.header {
 
-  background-image: url("light-bg-image.jpg");
+  background-image: url('light-bg-image.jpg');
   -webkit-background-size: cover;
   -moz-background-size: cover;
   background-size: cover;
@@ -3767,7 +3767,7 @@ footer #newsletter .form-control {
 #facts {
   padding: 180px 0;
   background-color: #cccccc;
-  background: url("facts-bg.jpg");
+  background: url('facts-bg.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
@@ -5118,7 +5118,7 @@ body.demo {
 #facts {
   padding: 110px 0 80px;
   margin-top: 50px;
-  background: url("bg45.png") no-repeat;
+  background: url('bg45.png') no-repeat;
   background-color: #eeeeee;
 }
 
