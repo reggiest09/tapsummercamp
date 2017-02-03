@@ -1,0 +1,120 @@
+<div class="container" style="
+    margin-top: 100px; margin-bottom: 50px;">
+  <div class="row">
+<div id="content">
+<div class="tab-content">
+  <%= simple_form_for @user, :url=>{:controller=>"early_birds",:action=>"update",:id=>@user.id}, method: "put" do |f| %>
+    <div class="container change-container center_div">
+    <div class="tab-pane" id="tab1">
+    <% if params[:plan_name] == "summer_wk"%>
+      <%= render partial: "summer_weekly", locals: {plan_name: params[:plan_name],summer_plan: params[:summer_plan],f: f} %>
+    <%elsif params[:plan_name] == "summer_wk1" %> 
+      <%= render partial: "summer_weekly", locals: {plan_name: params[:plan_name],f: f} %>
+    <%else%>
+      <h3>  <%if params[:plan_name] == "noresmen_basketball" %> 
+             Norsemen Basketball 2016- 2017
+           <h3>  You may enter multiple children's names In the Child Name box. Seperate your childrens names by comma. If you are registering more than one child. Please email your children's birthday dates to tapssportsacademy@gmail.com</h3>
+
+            <%else%>
+              TAPS Summer Camp 2017 
+            <%end%>
+      </h3>
+      <div class="row">
+        <div class="col-lg-3 col-xs-5 ">
+          <%= f.input :parent_name, placeholder: 'first name',class: "required email col-xs-5 ", required: true %>
+        </div>
+        <div class="col-lg-3 col-xs-5 ">
+          <%= f.input :last_name, placeholder: 'last name',class: "required email", required: true %>
+        </div>
+        <div class="col-lg-3 col-xs-5 ">
+          <%= f.input :primary_phone, label: "Primary Phone", required: true %>
+        </div>
+      </div><br>
+      <div class="row">
+      <div class="col-lg-3 col-xs-5 ">
+        <p>If you are registering more than 1 Child Seperate Child names with a comma
+         example: James Smith, Dave Smith</p>
+       </div>
+       </div>
+       
+       <div class="row">
+        <div class="col-lg-3 col-xs-5">
+          <%= f.input :child_name, placeholder: 'Child Name or Names', input_html: { multiple: true,"data-role"=>"tagsinput",required: true }, class: "required name col-xs-6 col-lg-2" %>
+          
+        </div>
+      </div></br>
+      
+
+
+
+
+
+
+
+       <div class="row">
+      <div class="col-lg-3 col-xs-5 ">
+       <h3> Child # 1 information </h3>
+      </div>
+      </div><br>
+       
+      
+      <div class="row">
+        <div class="col-lg-3 col-xs-5 ">
+        <%= f.input :grand_level, label: "Grade Level as of Fall 2016"%>
+        </div> 
+        <div class="col-lg-3 col-xs-5 ">
+          <%= f.input :dob, label: "Date of Birth" %>
+        </div>
+         <div class="col-lg-3 col-xs-5 ">
+          <%= f.input :home_address, required: false %>
+        </div>
+    </div><br>
+    
+
+      <div class="row">
+      <div class="col-lg-3 col-xs-5 ">
+       <h3> Child # 2 information </h3>
+      </div>
+      </div><br>
+
+       <div class="row">
+        <div class="col-lg-3 col-xs-5 ">
+        <%= f.input :grand_level, label: "Grade Level as of Fall 2016"%>
+        </div> 
+        <div class="col-lg-3 col-xs-5 ">
+          <%= f.input :dob, label: "Date of Birth" %>
+        </div>
+         <div class="col-lg-3 col-xs-5 ">
+          <%= f.input :home_address, required: false %>
+        </div>
+    </div><br>
+     
+     
+      
+      <div class="row">
+        
+        
+      </div>
+      
+    
+    
+
+    
+    <div class="row">
+    </div>
+
+
+
+    <%= f.hidden_field "plan_name", :value => params[:plan_name] %>
+    <%= f.hidden_field "interval", :value => params[:interval] %>
+    <%end%>
+    
+  </div>
+    <%= f.submit "Continue", class: "btn btn-primary btn-info" %>
+  <% end %>
+</div>
+ <div class="wave2"></div>
+</div>
+</div>
+</div>
+</div>

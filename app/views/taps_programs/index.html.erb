@@ -1,0 +1,10 @@
+<% if params[:query] == "edencamp" %>
+  <%= render partial: 'edencamp' %>
+<% elsif params[:query] == "charlottecamp"%>
+  <%= render partial: "charlottecamp" %>
+ <% elsif params[:query] == "earlybird_special"%>
+ <%= render partial: 'earlybird_special' %>
+ <% elsif params[:query] == "FAQ"%>
+ <%= render partial: 'faq_questions' %>
+ <%else%>
+ <%end%>

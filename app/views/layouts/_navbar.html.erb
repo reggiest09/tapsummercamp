@@ -1,0 +1,66 @@
+  <!-- top-menu-inverse -->
+         <div class="top-menu top-menu-inverse">
+            <p>
+                <span class="left">
+                    <a href="#"><i class="lnr lnr-phone-handset"></i>Phone: 704-749-0528(Office) 704-674-8331(Mobile Office)
+                    </a>
+                    <a href="mailto:tapssummer@gmail.co"><i class="lnr lnr-envelope"></i>tapssummer@gmail.com</a>
+                </span>
+                <span class="right">
+                    <a href="navigations.html#"><i class="fa fa-facebook"></i></a>
+                    <a href="navigations.html#"><i class="fa fa-twitter"></i></a>
+                    <a href="navigations.html#"><i class="fa fa-google-plus"></i></a>
+                    <a href="navigations.html#"><i class="fa fa-pinterest"></i></a>
+                    <a href="navigations.html#"><i class="fa fa-linkedin"></i></a>
+                    <a href="navigations.html#"><i class="fa fa-dribbble"></i></a>
+                </span>
+            </p>
+        </div><!-- / top-menu-inverse -->
+        <!-- navbar-inverse -->
+        <nav class="navbar-1 navbar navbar-inverse">
+            <div class="container-fluid navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/"><%=image_tag "TAPS.png", alt: "logo"%></a>
+            </div><!-- / navbar-header -->
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                     
+                    <li><%=link_to 'Frequently Asked Questions',taps_programs_path(query: "FAQ")%></li>
+                    <li><%=link_to 'Charlotte,NC',taps_programs_path(query: "charlottecamp")%></li>
+                  <li><%=link_to 'Eden,NC',taps_programs_path(query: "edencamp")%></li>
+                    <li><%=link_to 'Early Bird',taps_programs_path(query: "earlybird_special")%>
+                 
+
+
+                    
+                    
+
+                  <% if user_signed_in? %>
+
+
+                    <li><%= image_tag avatar_url(current_user), class: "circle responsive-img avatar-small" %>&nbsp;
+                   <%= current_user.name %></li>
+                   <% else %>
+                    <li><%=link_to 'Sign Up', new_user_registration_path %></li>
+                    <% end %>
+
+                    <% if user_signed_in? %>
+                <li><%= link_to "Logout", destroy_user_session_path, :method => :delete %></li>
+                 <%else%>
+                
+                <li><%=link_to 'Log In', new_user_session_path %></li>
+              <%end%>
+
+                   
+                   
+                </ul>
+            </div><!--/.nav-collapse -->
+        </nav><!-- / navbar-inverse -->
+    </div><!-- / container -->
+    <!-- / navbar-1 default with buttons -->
+       

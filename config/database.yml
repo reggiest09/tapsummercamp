@@ -1,0 +1,26 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  
+  pool: 5
+
+development:
+  <<: *default
+  database: tapsummer_development
+  username: Reggie
+  password: " "
+
+  
+test:
+  <<: *default
+  database: tapsummer_test
+  username: Reggie
+  password: " "
+
+
+
+production:
+  <<: *default
+  database: tapsummer_production
+  username: Reggie
+  password: " "

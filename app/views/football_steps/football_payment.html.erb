@@ -1,0 +1,160 @@
+<div class="container" style="
+    margin-top: 100px; margin-bottom: 50px;">
+  <div class="row">
+<div id="content">
+  <% flash.each do |name, msg| %>
+          <div class="alert alert-success fade in">
+        <a href="#" class="close" data-dismiss="alert">&times;</a>
+        <strong><%=msg%></strong>
+      </div>
+        <% end %>
+<%= simple_form_for @subscription do |f| %>
+  <div class="container change-container center_div">
+  <div class="tab-pane" id="tab5">
+     <h4>Make Your Payment</h4>
+  <%= f.hidden_field :stripe_card_token %>
+
+  <%= f.hidden_field :user_id,value: current_user.id%>
+  <%#= f.hidden_field :plan_id %>
+  <% if @subscription.stripe_card_token.present? %>
+    Credit card has been provided.
+  <% else %>
+    <div class="row">
+      <div class="col-lg-4">
+        <%= label_tag :card_number, "Credit Card Number" %>
+        <%= text_field_tag :card_number, nil, name: nil, class: "form-control input-lg", required: true %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-4">
+        <%= label_tag :card_code, "Security Code on Card (CVV)" %>
+        <%= text_field_tag :card_code, nil, name: nil, class: "form-control input-lg", required: true %>
+        </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-4">
+        <%= label_tag :card_month, "Card Expiration" %>
+        <%= select_month nil, {add_month_numbers: true}, {name: nil, id: "card_month", class: "form-control input-lg", required: true} %>
+        <br>
+        <%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+15}, {name: nil, id: "card_year",class: "form-control input-lg", required: true} %>
+      </div>
+    </div>
+  <% end %>
+  <div id="stripe_error">
+    <noscript>JavaScript is not enabled and is required for this form. First enable it in your web browser settings.</noscript>
+  </div>
+  <br>
+
+<div class="row">
+  <div class="col-lg-12">
+    <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target=".bs-example-modal-lg" data-keyboard="false" data-backdrop="static">
+      <span class="glyphicon glyphicon-collapse-down"></span> Waiver and Release Form for Summer Camp
+    </button>
+    <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target=".bs-example1-modal-lg" data-keyboard="false" data-backdrop="static">
+      <span class="glyphicon glyphicon-collapse-down"></span> WAIVER AND AUTHORIZATION FOR TREATMENT
+    </button>
+    <%= f.input :tos_payment, as: :boolean, checked_value: true, unchecked_value: false, class: "required", required: true, label: "I read this waiver" %>
+  </div>
+</div>
+  <div class="previous"%>
+    <%#= link_to "previous step", wizard_path(:redme),class: "page-refresh btn btn-primary btn-sm" %>
+    <%= f.submit "Make Payment",class: "next btn btn-primary", :onclick => "validate_form();"%>
+    <%# link_to "skip this step", next_wizard_path,class: "skip btn btn-primary btn-sm" %>
+  </div>
+<%end%>
+<% if current_user.plan_name == "eden" || current_user.plan_name == "charlotte" %>
+  <div class="row">
+    <div class="col-lg-12 color-change">
+        <% if current_user.child_count.to_i > 0 %>
+          You will be charged $<%= 35 * current_user.child_count.to_i %>
+        <% else %>
+      <% end %>
+
+   
+    </div>
+
+  </div>
+<% end %>
+
+
+
+
+
+
+
+
+<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="gridSystemModalLabel">Waiver Text</h4>
+      </div>
+      <div class="modal-body">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-12">
+              Waiver and Release Form for After School
+              Liability Release and Parental Consent Form
+              In consideration of the acceptance of my application for the above program, I hereby waive, release, and discharge any and all claims for damages for personal injury, property damages or which may hereafter occur to me as a result of participation in said event. This release is intended to discharge in advance T.A.P.S. Inc. and Golden Norsemen Sports Club, its officials, officers, employees, volunteers and agents from liability, even though that liability may arise out of perceived negligence on the part of persons mentioned above. It is understood that some recreational activities involve an element of risk or danger of accidents, and knowing those risks, I hereby assume those risks. It is further understood and agreed that this waiver, release and assumption of risk is to be binding on my heirs and assignees.
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade bs-example1-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="gridSystemModalLabel">Waiver Text</h4>
+      </div>
+      <div class="modal-body">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-12">
+              WAIVER AND AUTHORIZATION FOR TREATMENT
+
+              The health history is complete and accurate, and participant has permission to engage in all activities unless otherwise specified in writing. I understand that the T.A.P.S assumes no responsibility for injuries or illness which my child may sustain as a result of his/her participation in After School, athletics, sports programs, the use of any equipment, exercise or other activities. I expressly acknowledge that my child has been medically cleared to participate in vigorous physical activities. I also understand that there is a risk of injury while participating in physical activities. I agree to hold harmless the T.A.P.S, its staff and volunteers for accidents of injuries arising out of my child’s participation in activity.
+
+              While the T.A.P.S will make every effort to provide reasonable accommodations for mentally and physically challenged children, After School will not accept children who are (1) of danger to themselves, (2) of danger to others, (3) a disruption to the normal activities making it unreasonably difficult for other children to enjoy the After School programs. Any of the above reasons will be grounds for dismissal from After School. A parent/guardian must discuss special conditions or circumstances involving their child with the director. This must be completed prior to registration so that the administration may make a determination if reasonable accommodations may be made for your child.
+
+              I agree to have my child examined medically within a reasonable time period by the family physician stating he/she is free from communicable disease and has not been exposed to such. I hereby give my permission to the medical personnel selected by the T.A.P.S director to order x-rays, routine tests, treatment, to release any records necessary for insurance purposes, and to provide or arrange necessary related transportation for myself/or my child. In the event that I cannot be reached in an emergency, I herby give permission to the physician selected by the T.A.P.S director to secure and administer treatment including hospitalization for my child.
+
+              I understand that no accident or medical insurance is provided with this activity. I give permission to the T.A.P.S, without limitation or obligation to use photographs, film footage, tape recordings which may include my child’s image and/or voice for purposes of promoting or interpreting T.A.P.S programs and release the T.A.P.S from any claim of liability to that use. I give my consent for my child to leave the T.A.P.S site, participate in authorized T.A.P.S trips and to ride in authorized vehicles for the purpose of transportation in connection with the T.A.P.S program.
+
+              I have read and agree to all the policies set forth by the T.A.P.S and by the T.A.P.S After School Program.
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class = "error-code"></div>
+<div class="coupon-text-message">
+  <div class="alert fade in">
+    <a href="#" class="close" data-dismiss="alert" style = "display:none">&times;</a>
+    <span></span>
+  </div>
+</div>
+<div class="row">
+  <div class="col-lg-6">
+    <P>Please DO NOT double Click on the “Make Payment Button" – You may be charged twice for your purchase. Please allow 5 - 30 seconds for your payment to process. The speed of your purchase processs depends on your current internet connection speed. All Successful Transactions will display "Thank You For Your Purchase " If you receive an error message or have a problem with your payment, please contact Cynthia - tapscsmith@gmail.com</P>
+  </div>
+</div>
+</div>
+</div>
+ <div class="wave2"></div>
+</div>
+</div>
+</div>

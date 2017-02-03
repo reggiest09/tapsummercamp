@@ -1,0 +1,97 @@
+<div id="testimonials-slider">
+    <div class="container">
+        <div id="testimonial-slider" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-target="#testimonial-slider" data-slide-to="0" class=""></li>
+                <li data-target="#testimonial-slider" data-slide-to="1" class="active"></li>
+            </ol>
+            <div class="carousel-inner" role="listbox">
+                <!-- slide-item -->
+                <div class="item">
+                    <div class="testimonial">
+                        
+                        <%= image_tag "ar.jpg", alt: "" %>
+                        <h3>Strength does not come from winning. Your struggles develop your strengths. When you go through hardships and decide not to surrender, that is strength.</h3>
+                        <h5 class="customer-name">- Arnold Schwarzenegger</h5>
+                    </div><!-- / testimonial-->
+                </div><!-- / slide item -->
+                <!-- slide-item -->
+                <div class="item active">
+                    <div class="testimonial">
+                        <%= image_tag "us.jpg", alt: "" %>
+                        <h3>There are better starters than me but I’m a strong finisher.</h3>
+                        <h5 class="customer-name">- —Usain Bolt</h5>
+                    </div><!-- / testimonial-->
+                </div><!-- / slide item -->
+            </div><!-- / carousel-inner -->
+        </div><!-- / testimonial-slider -->
+    </div><!-- / container -->
+</div>
+
+<!-- features section with image left -->
+<div class="space-200">&nbsp;</div>
+
+<section id="features" class="no-margin no-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <%= image_tag "3.jpg", alt:"" %>
+            </div>
+
+            <div class="col-md-6 space-top">
+                <div class="feature-description">
+                    <h5>Registration Charlotte Loation</h5>
+                    <p>Select the amount of Children you wish to register.
+Click the “Register Now” button to begin the registration process. Before you sign up for a camp, you will be prompted to create an account with a username and password. Afterward, you will be able to sign up participants, make payments, view registrations, edit contact information, and more. If you lose your password please email tapscsmith@gmail.com.
+                    <br>
+                    <br>
+                    
+                    </p>
+                </div><!-- / feature-description -->
+
+                <div class="row">
+                    <div class="col-sm-6 feature-left space-top-30">
+                        <div class="feature block">
+                            
+                            <h3>How many children do you wish to register?</h3>
+                            <p>Select child amount.</p>
+                            <%=form_tag current_user.present? ? summer_camps_path : new_user_session_path,method: :get do %>
+                                <%=hidden_field_tag 'plan_name',nil,value: "charlotte"%>
+                                    <div class= "weekly">
+                                        <%= label 'weekly', "One child", :value => "true"  %>
+                                        <%= radio_button_tag 'interval', 1, true, class: 'monthly_radio'%></br>
+                                        <%= label 'weekly', "Two Children", :value => "false" %>
+                                        <%= radio_button_tag 'interval', 2, false, :checked => true, class: 'weekly_radio' %></br>
+                                        <%= label 'weekly', "Three Children", :value => "false" %>
+                                        <%=radio_button_tag 'interval',3,false%>
+                                    </div>
+                                    <li><%=submit_tag 'Register', class: "btn btn-primary bg-color-6 btn-block"%></a></li>
+                                        </ul>
+                                      </div>
+                                    <%end%>
+                        </div><!-- / feature-block -->
+                    </div><!-- / col-md-6 feature-left -->
+
+                    
+
+
+
+
+
+
+                    <div class="col-sm-6 feature-left space-top-30">
+                        <div class="feature block">
+                            
+                            <h5>Fee</h5>
+                            <p>Registraion is $35 per child.</p>
+                        </div><!-- / feature-block -->
+                    </div><!-- / col-md-6 feature-left -->
+                </div><!-- / row -->
+
+                
+
+            </div><!-- / col-md-6 -->
+        </div><!-- / row -->
+    </div><!-- / container -->
+</section>
+<div class="space-200">&nbsp;</div>

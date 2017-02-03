@@ -1,0 +1,172 @@
+<div class="container" style="
+    margin-top: 100px; margin-bottom: 50px;">
+  <div class="row">
+<div id="content">
+  <% flash.each do |name, msg| %>
+          <div class="alert alert-success fade in">
+        <a href="#" class="close" data-dismiss="alert">&times;</a>
+        <strong><%=msg%></strong>
+      </div>
+        <% end %>
+<%= simple_form_for @subscription do |f| %>
+  <div class="container change-container center_div">
+  <div class="tab-pane" id="tab5">
+     <h4>Make Your Payment</h4>
+  <%= f.hidden_field :stripe_card_token %>
+
+  <%= f.hidden_field :user_id,value: current_user.id%>
+  <%#= f.hidden_field :plan_id %>
+  <% if @subscription.stripe_card_token.present? %>
+    Credit card has been provided.
+  <% else %>
+    <div class="row">
+      <div class="col-lg-4">
+        <%= label_tag :card_number, "Credit Card Number" %>
+        <%= text_field_tag :card_number, nil, name: nil, class: "form-control input-lg", required: true %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-4">
+        <%= label_tag :card_code, "Security Code on Card (CVV)" %>
+        <%= text_field_tag :card_code, nil, name: nil, class: "form-control input-lg", required: true %>
+        </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-4">
+        <%= label_tag :card_month, "Card Expiration" %>
+        <%= select_month nil, {add_month_numbers: true}, {name: nil, id: "card_month", class: "form-control input-lg", required: true} %>
+        <br>
+        <%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+15}, {name: nil, id: "card_year",class: "form-control input-lg", required: true} %>
+      </div>
+    </div>
+  <% end %>
+  <div id="stripe_error">
+    <noscript>JavaScript is not enabled and is required for this form. First enable it in your web browser settings.</noscript>
+  </div>
+  <br>
+
+<div class="row">
+  <div class="col-lg-12">
+    <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target=".bs-example-modal-lg" data-keyboard="false" data-backdrop="static">
+      <span class="glyphicon glyphicon-collapse-down"></span> Terms & Comditions 2017
+    </button>
+    <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target=".bs-example1-modal-lg" data-keyboard="false" data-backdrop="static">
+      <span class="glyphicon glyphicon-collapse-down"></span> 2017 Summer Camp Fees & Payment Policies 
+    </button>
+    <%= f.input :tos_payment, as: :boolean, checked_value: true, unchecked_value: false, class: "required", required: false, label: "I read this waiver" %>
+  </div>
+</div>
+  <div class="previous"%>
+    <%#= link_to "previous step", wizard_path(:redme),class: "page-refresh btn btn-primary btn-sm" %>
+    <%= f.submit "Make Payment",class: "next btn btn-primary", :onclick => "validate_form();"%>
+    <%# link_to "skip this step", next_wizard_path,class: "skip btn btn-primary btn-sm" %>
+  </div>
+<%end%>
+<% if current_user.plan_name == "charlotte" || current_user.plan_name == "eden" %>
+  <div class="row">
+    <div class="col-lg-12 color-change">
+    
+        <% if current_user.child_count.to_i > 0 %>
+          You will be charged $<%= 35 * current_user.child_count.to_i %>
+        <% else %>
+        
+
+      
+    <% end %>
+    </div>
+  </div>
+<% end %>
+
+
+
+
+
+
+
+
+
+<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="gridSystemModalLabel">2017 Terms</h4>
+      </div>
+      <div class="modal-body">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-12">
+              You agree that the operator may authorize the physician of his/her choice to provide emergency care in the event that neither you nor the family physician can be contacted immediately. 
+You give T.A.P.S, Inc. permission to transport your child by facility van/automobile to field trips away from the facility upon acknowledgement of the activity. This authorization is valid from 06/12/2017 to 08/28/ 2017. 
+You understand that the facility will notify you each time your child is to participate in an activity that would involve transportation other than daily travel to and/or from school by way of flyer/newsletter 
+You have read and agree with all policies and procedures set by The T.A.P.S organization. 
+You will give a two week notice to cancel enrollment. 
+You understand that you are responsible for your normal weekly rate for the two weeks. When your child is absent, you understand that your normal weekly rate is required. NO EXCEPTIONS. Weekly fees are not prorated.
+ These Terms are between T.A.P.S, Inc. and its affiliates, and “you,” the individual completing this form. You agree that this form is like any written negotiated agreement signed by you. 
+BY CLICKING TO ACCEPT THE TERMS, YOU AGREE TO BE BOUND BY THE TERMS THAT APPLY TO YOU AS DESCRIBED ABOVE.
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade bs-example1-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="gridSystemModalLabel">Waiver Text</h4>
+      </div>
+      <div class="modal-body">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-12">
+             2017 Summer Camp Fees & Payment Policies 
+Fees are: $35 registration fee for 1 child, $5 off each additional sibling child
+$110** per child, $100.00** older child with 10% sibling discount
+
+Unsure of your summer schedule? Daily Drop-in Rate starting at $30 per day per child.
+Summer Camp T-Shirt: $12
+
+**Fees include all activities and Free breakfast, lunch, and snack available ALL SUMMER**
+Payment Options: Payments may be made with debit or credit card our website (Reoccurring). You may also pay by cash, money order, cashier’s check, debit or credit card in our facility on Monday Morning and the Friday prior to camp week.
+Fee Payment Policy: Fees are due on or the Friday prior to Monday of the week of care. Fees may be paid in advance for any period of time. The full weekly fee is due regardless of the number of days a student attends. Fees are never pro-rated for missed days and cancellations. Checks or money orders should be made payable to: T.A.P.S, Inc. 
+Late Payment Penalties: Weekly fees are due on Monday for the week of care. If fees for the week haven't been paid on Monday, a $5 late fee is assessed and a $3 late fee is assessed each day thereafter. (Example: If your tuition is $60/week and you cannot make payment until Thursday, you would add $5 for Tues., and $3 for Wed. and $3 for Thurs.) If you will not be making full payment on Friday, remember to make other arrangements for your child. Your child cannot return to our program until full payment of the balance due has been made. A $25 registration fee is due at re-enrollment the following Monday (not the late fee). 
+ SUSPENSION / DISMISSAL - We reserve the right to suspend or dismiss a child in our sole discretion for unsatisfactory or inappropriate behavior, if we do not have adequate expertise or resources for the child’s educational, medical or other needs (subject to any applicable regulatory requirements), for violations of our policies, or if for any reason we determine it to be in the best interests of the School. In our sole discretion, suspension or dismissal may be with or without notice.
+ RETURNED CHECKS OR NSF ACH- We only accept personal checks in special circumstances. A $30.00 service charge will be assessed in amounts as reflected on the Fee Schedule for a check returned for any reason. In addition, a late charge will be assessed as reflected on the Fee Schedule, unless payment is received to cover the funds within three banking days of notification. If your check is returned three times within a three month period, then for a period of one year, you must make all payments by money order or certified check, or by cash,
+CASH PAYMENTS - For your protection, cash payments may be made only to the Advisor or Administrators of the School. You must receive a receipt as proof of payment. If the payment is for an amount of more than $5.00, it will be invalid unless you obtain a signed cash receipt from the Program Administrator, Executive Director or Program Advisor.
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class = "error-code"></div>
+<div class="coupon-text-message">
+  <div class="alert fade in">
+    <a href="#" class="close" data-dismiss="alert" style = "display:none">&times;</a>
+    <span></span>
+  </div>
+</div>
+<div class="row">
+  <div class="col-lg-6">
+    <P>Please DO NOT double Click on the “Make Payment Button" – You may be charged twice for your purchase. Please allow 5 - 30 seconds for your payment to process. The speed of your purchase processs depends on your current internet connection speed. All Successful Transactions will display "Thank You For Your Purchase " If you receive an error message or have a problem with your payment, please contact Cynthia - tapscsmith@gmail.com</P>
+  </div>
+</div>
+</div>
+</div>
+ <div class="wave2"></div>
+</div>
+</div>
+</div>
