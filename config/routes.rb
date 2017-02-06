@@ -23,6 +23,6 @@ resources :subscriptions do
    get 'summer_payment' => 'summer_camps#summer_payment'
    get 'early_payment' => 'early_birds#early_payment'
   
-  
+  get '/info_form' => 'downloads#info_form'
 end
 
