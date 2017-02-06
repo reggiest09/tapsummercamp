@@ -163,7 +163,7 @@ class Subscription < ActiveRecord::Base
     (35 * user.child_count.to_i) * 100
   end
   def stripe_early_bird_amount(user)
-    (985 * user.child_count.to_i) * 100
+    (995 * user.child_count.to_i) * 100
   end
 
   def stripe_baseball_and_basketball_amount(user)

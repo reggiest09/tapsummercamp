@@ -17,12 +17,12 @@ resources :subscriptions do
   resources :summer_camps
   resources :early_birds
 
-
-
   get 'football_payment' => 'football_steps#football_payment'
    get 'summer_payment' => 'summer_camps#summer_payment'
    get 'early_payment' => 'early_birds#early_payment'
   
-  get '/info_form' => 'downloads#info_form'
+ 
+
+
 end
 
