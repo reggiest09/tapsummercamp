@@ -53,7 +53,7 @@
     <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target=".bs-example1-modal-lg" data-keyboard="false" data-backdrop="static">
       <span class="glyphicon glyphicon-collapse-down"></span> WAIVER AND AUTHORIZATION FOR TREATMENT
     </button>
-    
+    <%= f.input :tos_payment, as: :boolean, checked_value: true, unchecked_value: false, class: "required", required: true, label: "I read this waiver" %>
   </div>
 </div>
   <div class="previous"%>
