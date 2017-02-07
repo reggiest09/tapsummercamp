@@ -861,7 +861,7 @@ strong {
 /* / End Dribbble Button */
 /* / End Social Buttons */
 /* Checkboxes */
-.checkbox {
+/*.checkbox {
   padding-left: 10px;
 }
 
@@ -1019,7 +1019,7 @@ strong {
 
 /* / End Checkboxes */
 /* Radio Buttons */
-.radio {
+/*.radio {
   padding-left: 10px;
 }
 
@@ -1192,7 +1192,7 @@ strong {
 .radio-danger label {
   color: #ec7160;
 }
-
+*/
 /* / End Radio Buttons */
 /* Switches */
 /* Switch Style 1 */
@@ -1662,7 +1662,7 @@ strong {
 /* / End Dropdown Buttons */
 /* / End Buttons */
 /* Forms */
-.form-control {
+/*.form-control {
   color: #777777;
   background: #f7f7f7;
   font-weight: 400;
@@ -1746,7 +1746,7 @@ strong {
 }
 
 /* Contact Form 1 */
-#contact-form-1 .form-group {
+/*#contact-form-1 .form-group {
   margin-bottom: 0;
 }
 
@@ -1799,7 +1799,7 @@ strong {
 /* / End Contact Form 2 */
 /* / End Contact Forms */
 /* Login / Register Forms */
-#login-form {
+/*#login-form {
   width: 100%;
   background: white;
   border: 1px solid #ebebeb;
@@ -1867,7 +1867,7 @@ strong {
   margin-bottom: 30px;
   padding-left: 17px;
   padding-right: 17px;
-}
+}*/
 
 .log-title {
   font-size: 24px;
@@ -1887,9 +1887,9 @@ strong {
   color: #777777;
 }
 
-.forgot-password {
+/*.forgot-password {
   font-size: 16px;
-}
+}*/
 
 /* / End Login / Register Forms */
 /* Newsletter Forms */
