@@ -62,19 +62,18 @@
     <%# link_to "skip this step", next_wizard_path,class: "skip btn btn-primary btn-sm" %>
   </div>
 <%end%>
-<% if current_user.plan_name == "eden" || current_user.plan_name == "charlotte" %>
+<% if current_user.plan_name == "early_bird" %>
   <div class="row">
     <div class="col-lg-12 color-change">
-        <% if current_user.child_count.to_i > 0 %>
-          You will be charged $<%= 35 * current_user.child_count.to_i %>
+    
+        <%  if current_user.child_count.to_i > 0 %>
+          You will be charged $<%= 985 * current_user.child_count.to_i %>
         <% else %>
-      <% end %>
-
-   
+    <% end %>
     </div>
-
   </div>
 <% end %>
+
 
 
 
@@ -154,7 +153,7 @@
 </div>
 </div>
 </div>
- <div class="wave2"></div>
+ <!-- <div class="wave2"></div> -->
 </div>
 </div>
 </div>

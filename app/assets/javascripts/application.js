@@ -13,7 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap-sprockets
-//= require custom
 //= require jquery.countTo
 //= require map-full
 //= require map
