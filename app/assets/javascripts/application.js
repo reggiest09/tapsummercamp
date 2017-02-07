@@ -14,9 +14,7 @@
 //= require jquery_ujs
 //= require bootstrap-sprockets
 //= require custom
-//= require form-scripts
 //= require jquery.countTo
-//= require.jquery.shuffle.min
 //= require map-full
 //= require map
 //= require owl.carousel.min
