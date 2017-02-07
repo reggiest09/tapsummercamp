@@ -19,6 +19,5 @@
 //= require map
 //= require owl.carousel.min
 //= require subscription
-//= require validator.min
 //= require turbolinks
 //= require_tree .
