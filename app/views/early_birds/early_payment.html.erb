@@ -1,5 +1,5 @@
-<div class="container" style="
-    margin-top: 100px; margin-bottom: 50px;">
+<div class="space-200">&nbsp;</div>
+<div class="container">
   <div class="row">
 <div id="content">
   <% flash.each do |name, msg| %>
@@ -53,12 +53,12 @@
     <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target=".bs-example1-modal-lg" data-keyboard="false" data-backdrop="static">
       <span class="glyphicon glyphicon-collapse-down"></span> WAIVER AND AUTHORIZATION FOR TREATMENT
     </button>
-    <%= f.input :tos_payment, as: :boolean, checked_value: true, unchecked_value: false, class: "required", required: true, label: "I read this waiver" %>
+   <%= f.input :tos_payment, as: :boolean, checked_value: true, unchecked_value: false, class: "required", required: true, label: "I read this waiver" %>
   </div>
 </div>
   <div class="previous"%>
     <%#= link_to "previous step", wizard_path(:redme),class: "page-refresh btn btn-primary btn-sm" %>
-    <%= f.submit "Make Payment",class: "next btn btn-primary", :onclick => "validate_form();"%>
+    <%= f.submit "Make Payment",class: "next btn btn-lg btn-success-filled", :onclick => "validate_form();"%>
     <%# link_to "skip this step", next_wizard_path,class: "skip btn btn-primary btn-sm" %>
   </div>
 <%end%>
