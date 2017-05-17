@@ -30,58 +30,45 @@
                 <%= f.input :primary_phone, label: "Primary Phone", required: true %>
               </div>
             </div>
-            <br>
-            <div class="row">
-              <div class="col-lg-3 col-xs-5 ">
-                <p>If you are registering more than 1 Child. Seperate Child names with a comma
-                  example: James Smith, Dave Smith
-                </p>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-lg-3 col-xs-5">
-                <%= f.input :child_name, placeholder: 'Child Name or Names', input_html: { multiple: true,"data-role"=>"tagsinput",required: true }, class: "required name col-xs-6 col-lg-2" %>
-              </div>
-            </div>
-            </br>
-            <div class="row">
-              <div class="col-lg-3 col-xs-5 ">
-                <h3> Child # 1 information </h3>
-              </div>
-            </div>
-            <br>
-            <div class="row">
-              <div class="col-lg-3 col-xs-5 ">
-                <%= f.input :grand_level, label: "Grade Level as of Fall 2016"%>
-              </div>
-              <div class="col-lg-3 col-xs-5 ">
-                <%= f.input :dob, label: "Date of Birth" %>
-              </div>
-              <div class="col-lg-3 col-xs-5 ">
-                <%= f.input :home_address, required: false %>
-              </div>
-            </div>
-            <br>
-            <div class="row">
-              <div class="col-lg-3 col-xs-5 ">
-                <h3> Child # 2 information </h3>
-              </div>
-            </div>
-            <br>
-            <div class="row">
-              <div class="col-lg-3 col-xs-5 ">
-                <%= f.input :grand_level, label: "Grade Level as of Fall 2016"%>
-              </div>
-              <div class="col-lg-3 col-xs-5 ">
-                <%= f.input :dob, label: "Date of Birth" %>
-              </div>
-              <div class="col-lg-3 col-xs-5 ">
-                <%= f.input :home_address, required: false %>
-              </div>
-            </div>
-            <br>
-            <div class="row">
-            </div>
+            <br> <%= f.fields_for :children do |ff| %>
+                <div class="row">
+                  <div class="col-md-12">
+                    <h3> Child # <%= ff.index + 1 %> information </h3>
+                  </div>
+                </div>
+                <br>
+                <div class="row">
+                  <div class="col-lg-4 col-xs-5 ">
+                     <%= ff.input :name, required: false %>
+                  </div>
+                  <div class="col-lg-4 col-xs-5 ">
+                    <%#= f.input :dob, as: :date, start_year: Date.today.year - 90,
+                              end_year: Date.today.year - 12, discard_day: true,
+                              order: [:month, :year] %>
+                    <%= f.label :dob, "Date of Birth" %>
+                    <%= ff.text_field :dob, class: "form-control" %>
+                  </div>
+                  <div class="col-lg-4 col-xs-5 ">
+                    <%= ff.input :grade, required: false %>
+                  </div>
+                  <div class="col-lg-6 col-xs-5 ">
+                    <%= ff.input :home_address %>
+                  </div>
+                  <div class="col-lg-6 col-xs-5 ">
+                    <%= ff.input :allergies %>
+                  </div>
+                  <div class="col-lg-4 col-xs-5 ">
+                    <%= ff.input :shirt_size, collection: Child.sizes, :selected => 0 %>
+                  </div>
+                  <div class="col-lg-4 col-xs-5 ">
+                    <%= ff.input :short_size, collection: Child.sizes, :selected => 0 %>
+                  </div>
+                  <div class="col-lg-4 col-xs-5 ">
+                    <%= ff.input :soccer_postiion,:as => :check_boxes, collection: Child.allergies, multiple: true %>
+                  </div>
+                  
+                </div>
+              <% end %>
             <div class="row">
             </div>
             <%= f.hidden_field "plan_name", :value => params[:plan_name] %>

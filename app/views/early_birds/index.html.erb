@@ -30,16 +30,7 @@
                 <%= f.input :primary_phone, label: "Primary Phone", required: true %>
               </div>
             </div>
-            <br>
-            <div class="row">
-              <div class="col-lg-3 col-xs-5 ">
-                <p>If you are registering more than 1 Child. Seperate Child names with a comma
-                  example: James Smith, Dave Smith
-                </p>
-              </div>
-            </div>
             
-            <div class="row">
               <%= f.fields_for :children do |ff| %>
                 <div class="row">
                   <div class="col-md-12">
@@ -81,8 +72,6 @@
               <% end %>
             <br>
       
-            <div class="row">
-            </div>
             <%= f.hidden_field "plan_name", :value => params[:plan_name] %>
             <%= f.hidden_field "interval", :value => params[:interval] %>
             <%end%>

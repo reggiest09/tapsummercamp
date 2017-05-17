@@ -4,6 +4,7 @@ class SummerCampsController < ApplicationController
   def index
     @user = current_user
     @user.update_attributes(:child_count => params[:interval])
+    params[:interval].to_i.times {   @user.children.build }
     @subscription = Subscription.new
   end
 
@@ -36,7 +37,7 @@ class SummerCampsController < ApplicationController
                                  :shirt_size,:father_name,
                                  :company,:parent_name,:parent_email,:child_name,
                                  :other_arrangements,:player_weight,
-                                 :amount,:register_for => [])
+                                 :amount,:register_for => [],:children_attributes => [:name,:grade,:home_address,:shirt_size,:short_size,:allergies,:soccer_postiion => []])
   end
 
 end
