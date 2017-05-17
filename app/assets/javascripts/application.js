@@ -16,5 +16,5 @@
 //= require subscription
 //= require owl.carousel.min
 //= require subscription
-//= require turbolinks
+// require turbolinks
 //= require_tree .

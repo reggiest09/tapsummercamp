@@ -1,26 +1,21 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  
+  template: template0
   pool: 5
-
+  host: localhost
 development:
   <<: *default
-  database: tapsummer_development
-  username: Reggie
-  password: " "
-
-  
+  database: tapsummer_development_new
+  username: postgres
+  password: postgres
 test:
   <<: *default
-  database: tapsummer_test
-  username: Reggie
-  password: " "
-
-
-
+  database: tapsummer_test_new
+  username: postgres
+  password: postgres
 production:
   <<: *default
-  database: tapsummer_production
-  username: Reggie
-  password: " "
+  database: tapsummer_production_new
+  username: postgres
+  password: postgres

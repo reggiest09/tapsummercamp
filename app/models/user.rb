@@ -10,7 +10,10 @@ class User < ActiveRecord::Base
   has_many :stripe_customers
   has_many :stripe_charges
   has_many :children_names
+  has_many :children
   accepts_nested_attributes_for :children_names, allow_destroy: true
+  accepts_nested_attributes_for :children, allow_destroy: true
+  
   serialize :holiday
   serialize :child_name, Array
 

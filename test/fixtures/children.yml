@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  grade: MyString
+  dob: 2017-05-17
+  home_address: MyString
+  shirt_size: 1
+  short_size: 1
+  allergies: MyText
+  soccer_postiion: MyString
+  user_id: 
+
+two:
+  grade: MyString
+  dob: 2017-05-17
+  home_address: MyString
+  shirt_size: 1
+  short_size: 1
+  allergies: MyText
+  soccer_postiion: MyString
+  user_id: 
