@@ -38,12 +38,6 @@
                 </p>
               </div>
             </div>
-            <div class="row">
-              <div class="col-lg-3 col-xs-5">
-                <%= f.input :child_name, placeholder: 'Child Name or Names', input_html: { multiple: true,"data-role"=>"tagsinput",required: true }, class: "required name col-xs-6 col-lg-2" %>
-              </div>
-            </div>
-            </br>
             
             <div class="row">
               <%= f.fields_for :children do |ff| %>
