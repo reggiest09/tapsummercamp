@@ -30,47 +30,8 @@
                 <%= f.input :primary_phone, label: "Primary Phone", required: true %>
               </div>
             </div>
-            <br> <%= f.fields_for :children do |ff| %>
-                <div class="row">
-                  <div class="col-md-12">
-                    <h3> Child # <%= ff.index + 1 %> information </h3>
-                  </div>
-                </div>
-                <br>
-                <div class="row">
-                  <div class="col-lg-4 col-xs-5 ">
-                     <%= ff.input :name, required: false %>
-                  </div>
-                  <div class="col-lg-4 col-xs-5 ">
-                    <%#= f.input :dob, as: :date, start_year: Date.today.year - 90,
-                              end_year: Date.today.year - 12, discard_day: true,
-                              order: [:month, :year] %>
-                    <%= f.label :dob, "Date of Birth" %>
-                    <%= ff.text_field :dob, class: "form-control" %>
-                  </div>
-                  <div class="col-lg-4 col-xs-5 ">
-                    <%= ff.input :grade, required: false %>
-                  </div>
-                  <div class="col-lg-6 col-xs-5 ">
-                    <%= ff.input :home_address %>
-                  </div>
-                  <div class="col-lg-6 col-xs-5 ">
-                    <%= ff.input :allergies %>
-                  </div>
-                  <div class="col-lg-4 col-xs-5 ">
-                    <%= ff.input :shirt_size, collection: Child.sizes, :selected => 0 %>
-                  </div>
-                  <div class="col-lg-4 col-xs-5 ">
-                    <%= ff.input :short_size, collection: Child.sizes, :selected => 0 %>
-                  </div>
-                  <div class="col-lg-4 col-xs-5 ">
-                    <%= ff.input :soccer_postiion,:as => :check_boxes, collection: Child.allergies, multiple: true %>
-                  </div>
-                  
-                </div>
-              <% end %>
-            <div class="row">
-            </div>
+            <%= render 'partials/children_form', f: f %>
+            <br>
             <%= f.hidden_field "plan_name", :value => params[:plan_name] %>
             <%= f.hidden_field "interval", :value => params[:interval] %>
             <%end%>

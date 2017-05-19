@@ -40,6 +40,23 @@ def self.find_for_facebook_oauth(access_token, signed_in_resourse=nil)
     end
   end
 
+  def build_children(interval)
+    children_count = self.children.count
+    puts "======#{children_count}=========="
+    if (children_count < interval)
+      total = (interval + children_count)
+      diff = (interval - children_count).abs
+      diff_count = total > 3 ? (3 - children_count) : diff
+      diff_count.to_i.times {   self.children.build }
+    
+    end
+   # else
+   #   puts "===in else===#{children_count}========#{interval}=="
+    #  until (children_count == interval)
 
+    #    self.children.last.destroy
+     # end
+    #end
+  end
 
 end
